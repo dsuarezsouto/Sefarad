@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+  dashboard:
+    build: .
+    ports:
+     - "8080:8080"
+    environment:
+      - ES_ENDPOINT_EXTERNAL=${ES_ENDPOINT_EXTERNAL}
+      - FUSEKI_ENDPOINT_EXTERNAL=${FUSEKI_ENDPOINT_EXTERNAL}
+    volumes:
+     - .:/usr/src/app
+    networks:
+      - dashboard-network
+
+networks:
+  dashboard-network:
+    driver: bridge
