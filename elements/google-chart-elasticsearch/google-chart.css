@@ -5,9 +5,25 @@
   height: 300px;
 }
 
+:host([type="gauge"]) {
+  width: 300px;
+  height: 300px;
+}
+
+#chartdiv {
+  width: 100%;
+}
+
+#nodata {
+    position: absolute;
+    width: 100%;
+    line-height: 35px;
+    text-align: center; 
+}
+
 .top-bar{
   width: 100%; 
-  background-color: #014ea0; 
+  background-color:  #185fa0; 
   border-radius: 5px 5px 0 0; 
   color: white; 
   text-align: center; 
@@ -19,6 +35,12 @@
   vertical-align: middle;
 }
 
+iron-icon {
+  margin-right: 8px;
+  width: 21px;
+  height: 21px;
+}
+
 paper-icon-button.green {
   color: var(--paper-green-500);
 }
@@ -28,28 +50,6 @@ paper-icon-button.green:hover {
   border-radius: 50%;
 }
 
-.tweet {
-  
-  margin: 10px;
-  padding: 10px;
-  border-radius: 5px;
-  height: 80px;
-
-}
-
-.positive {
-  background: rgba(76, 175, 80, .2);
-}
-
-.negative {
-  background: rgba(255, 82, 82, .2);
-}
-
-.neutral {
-  background: rgba(96, 125, 139, .2);;
-}
-
-.text {
-  font-size: 17px;
-  font-weight: bold;
+paper-material {
+  background-color: #ffffff
 }

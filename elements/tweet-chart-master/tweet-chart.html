@@ -18,17 +18,19 @@
             <iron-icon icon="{{icon}}"></iron-icon>
             <span>{{title}}</span>
         </div>
-        <template is="dom-repeat" items="{{data}}" as="tweet"> 
-          <div class$="{{checkSentiment(tweet.sentiment.marl:hasPolarity)}} same-height">
-            <div class="row">
-              <div class="col-md-2">
-                <img src={{source}} style="width: 80px; display:block; position: relative;" align="left">
+        <div style="height: 600px; overflow-x: hidden; overflow-y: auto;">
+          <template is="dom-repeat" items="{{data}}" as="tweet"> 
+            <div class$="{{checkSentiment(tweet.sentiment)}} same-height">
+              <div class="row" style="height: 100%;">
+                <div class="col-md-2" style="height: 100%;">
+                  <img src={{checkTheme(tweet.theme)}} style="width: 80px; display:block; position: relative;max-height: 100%;" align="left">
+                </div>
+                <div class="col-md-10" style="height: 100%;overflow: hidden;">
+                  <span style="font-size:13px; display:inline-block; vertical-align: middle;">{{tweet.text}}</span>
+                </div>
               </div>
-              <div class="col-md-10">
-                <span style="font-size:15px; display:inline-block; vertical-align: middle;">{{tweet.text}}</span>
-              </div>
-            </div>
-        </template>
+          </template>
+        </div>
         <div style="width:100%; clear: both"></div>
     </paper-material>
 
@@ -123,12 +125,26 @@
       },
 
       checkSentiment: function(sentiment) {
-        if (sentiment == "marl:Positive")
+        if (sentiment[0]['marl:hasPolarity'] == "marl:Positive")
           return "tweet positive"
-        else if (sentiment == "marl:Negative")
+        else if (sentiment[0]['marl:hasPolarity'] == "marl:Negative")
           return "tweet negative"
         else 
           return "tweet neutral"
+      },
+
+      checkTheme: function(theme){
+        if(theme==0)
+          return "/img/sleep.svg"
+        else if (theme==1)
+          return "/img/notepad.svg"
+        else if (theme==2)
+          return "/img/pharmacist.svg"
+        else if (theme==3)
+          return "/img/man-reading.svg"
+        else if (theme==4)
+          return "/img/medicine.svg"
+
       }
     });
 
